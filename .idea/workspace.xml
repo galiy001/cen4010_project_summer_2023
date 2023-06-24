@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56c35913-3d9b-4f57-90fb-22c9861345db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/ShoppingCartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/BookEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/CommentsEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/PublisherEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/RatingsEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/WishlistEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/repository/BookRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/repository/ShoppingCartRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/ShoppingCartService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/implementation/ShoppingCartServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="56c35913-3d9b-4f57-90fb-22c9861345db" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
