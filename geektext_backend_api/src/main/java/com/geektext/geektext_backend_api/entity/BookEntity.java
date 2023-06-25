@@ -33,18 +33,18 @@ public class BookEntity {
     @Column(name = "discount_percent")
     private Double discountPercent;
 
-    @Column(name = "publisher_id")
-    private Long publisherId;
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private PublisherEntity publisher_id;
 
-    @Column(name = "author_id")
-    private Long authorId;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private AuthorEntity author_id;
 
-    public BookEntity() {
-
-    }
+    public BookEntity() {}
 
     public BookEntity(String isbn, String name, String description, String genre, Date datePublished,
-                      Double price, Integer copiesSold, Double discountPercent, Long publisherId, Long authorId) {
+                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher_id, AuthorEntity author_id) {
         this.isbn = isbn;
         this.name = name;
         this.description = description;
@@ -53,8 +53,8 @@ public class BookEntity {
         this.price = price;
         this.copiesSold = copiesSold;
         this.discountPercent = discountPercent;
-        this.publisherId = publisherId;
-        this.authorId = authorId;
+        this.publisher_id = publisher_id;
+        this.author_id = author_id;
     }
 
     public String getIsbn() {
@@ -121,19 +121,19 @@ public class BookEntity {
         this.discountPercent = discountPercent;
     }
 
-    public Long getPublisherId() {
-        return publisherId;
+    public PublisherEntity getPublisher_id() {
+        return publisher_id;
     }
 
-    public void setPublisherId(Long publisherId) {
-        this.publisherId = publisherId;
+    public void setPublisher_id(PublisherEntity publisher_id) {
+        this.publisher_id = publisher_id;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public AuthorEntity getAuthor_id() {
+        return author_id;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor_id(AuthorEntity author_id) {
+        this.author_id = author_id;
     }
 }

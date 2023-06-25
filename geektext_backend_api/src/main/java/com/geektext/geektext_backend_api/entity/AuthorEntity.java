@@ -14,12 +14,9 @@ public class AuthorEntity {
     @Column(name = "author_name")
     private String author_name;
 
-    // You must always provide an empty default constructor for JPA
-    public AuthorEntity() {
-    }
+    public AuthorEntity() {}
 
-    public AuthorEntity(Long author_id, String author_name) {
-        this.author_id = author_id;
+    public AuthorEntity(String author_name) {
         this.author_name = author_name;
     }
 

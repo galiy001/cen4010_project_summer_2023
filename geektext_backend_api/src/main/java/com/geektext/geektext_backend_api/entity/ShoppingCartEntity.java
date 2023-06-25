@@ -23,6 +23,8 @@ public class ShoppingCartEntity {
             inverseJoinColumns = @JoinColumn(name = "isbn"))
     private List<BookEntity> books;
 
+    public ShoppingCartEntity() {}
+
     public Long getId() {
         return cart_id;
     }
@@ -31,11 +33,11 @@ public class ShoppingCartEntity {
         this.cart_id = cart_id;
     }
 
-    public UserEntity getUser() {
+    public UserEntity getUser_id() {
         return user_id;
     }
 
-    public void setUser(UserEntity user_id) {
+    public void setUser_id(UserEntity user) {
         this.user_id = user_id;
     }
 
