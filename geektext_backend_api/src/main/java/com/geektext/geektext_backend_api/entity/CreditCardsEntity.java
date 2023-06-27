@@ -11,60 +11,60 @@ public class CreditCardsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "card_id")
-    private Long card_id;
+    private Long cardId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity user_id;
+    private UserEntity user;
 
     @Column(name = "card_number")
-    private int card_number;
+    private int cardNumber;
 
     @Column(name = "expiration_date")
-    private Date expiration_date;
+    private Date expirationDate;
 
     @Column(name = "cvv")
     private int cvv;
 
     public CreditCardsEntity() {}
 
-    public CreditCardsEntity(UserEntity user_id, int card_number, Date expiration_date, int cvv) {
-        this.user_id = user_id;
-        this.card_number = card_number;
-        this.expiration_date = expiration_date;
+    public CreditCardsEntity(UserEntity user, int cardNumber, Date expirationDate, int cvv) {
+        this.user = user;
+        this.cardNumber = cardNumber;
+        this.expirationDate = expirationDate;
         this.cvv = cvv;
     }
 
-    public Long getCard_id() {
-        return card_id;
+    public Long getCardId() {
+        return cardId;
     }
 
-    public void setCard_id(Long card_id) {
-        this.card_id = card_id;
+    public void setCardId(Long cardId) {
+        this.cardId = cardId;
     }
 
-    public UserEntity getUser_id() {
-        return user_id;
+    public UserEntity getUserId() {
+        return user;
     }
 
-    public void setUser_id(UserEntity user_id) {
-        this.user_id = user_id;
+    public void setUserId(UserEntity user) {
+        this.user = user;
     }
 
-    public int getCard_number() {
-        return card_number;
+    public int getCardNumber() {
+        return cardNumber;
     }
 
-    public void setCard_number(int card_number) {
-        this.card_number = card_number;
+    public void setCardNumber(int cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
-    public Date getExpiration_date() {
-        return expiration_date;
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setExpiration_date(Date expiration_date) {
-        this.expiration_date = expiration_date;
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     public int getCvv() {
