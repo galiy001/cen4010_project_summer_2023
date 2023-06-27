@@ -28,6 +28,11 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public Optional<UserEntity> searchByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
     public UserEntity createNewUser(UserEntity userEntity) {
         return userRepository.save(userEntity);
     }
