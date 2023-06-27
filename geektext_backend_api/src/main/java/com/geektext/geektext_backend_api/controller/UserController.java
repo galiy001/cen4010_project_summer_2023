@@ -27,6 +27,11 @@ public class UserController {
         return userService.searchByUserId(userId);
     }
 
+    @GetMapping("/username/{username}")
+    public Optional<UserEntity> searchByUsername(@PathVariable("username") String username) {
+        return userService.searchByUsername(username);
+    }
+
     @PostMapping
     public UserEntity createNewUser(@RequestBody UserEntity userEntity) {
         return userService.createNewUser(userEntity);
