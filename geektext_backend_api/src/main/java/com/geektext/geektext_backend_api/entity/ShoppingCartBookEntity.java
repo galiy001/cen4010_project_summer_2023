@@ -12,14 +12,14 @@ public class ShoppingCartBookEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
-    @JsonBackReference
     private ShoppingCartEntity cart;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "isbn")
-    @JsonIgnore
     private BookEntity book;
 
     public Long getId() {

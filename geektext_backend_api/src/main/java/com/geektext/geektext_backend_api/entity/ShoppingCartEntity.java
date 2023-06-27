@@ -16,9 +16,9 @@ public class ShoppingCartEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @JsonIgnore
     private UserEntity user;
 
     @JsonIgnore
