@@ -1,7 +1,11 @@
 package com.geektext.geektext_backend_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,12 +14,14 @@ public class ShoppingCartEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cart_id;
+    private Long cartId;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private UserEntity user_id;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private UserEntity user;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "shopping_cart_books",
@@ -23,22 +29,26 @@ public class ShoppingCartEntity {
             inverseJoinColumns = @JoinColumn(name = "isbn"))
     private List<BookEntity> books;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ShoppingCartBookEntity> shoppingCartBooks = new ArrayList<>();
+
     public ShoppingCartEntity() {}
 
-    public Long getId() {
-        return cart_id;
+    public Long getCartId() {
+        return cartId;
     }
 
-    public void setId(Long cart_id) {
-        this.cart_id = cart_id;
+    public void setCartId(Long cartId) {
+        this.cartId = cartId;
     }
 
-    public UserEntity getUser_id() {
-        return user_id;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUser_id(UserEntity user) {
-        this.user_id = user_id;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public List<BookEntity> getBooks() {
@@ -47,5 +57,13 @@ public class ShoppingCartEntity {
 
     public void setBooks(List<BookEntity> books) {
         this.books = books;
+    }
+
+    public List<ShoppingCartBookEntity> getShoppingCartBooks() {
+        return shoppingCartBooks;
+    }
+
+    public void setShoppingCartBooks(List<ShoppingCartBookEntity> shoppingCartBooks) {
+        this.shoppingCartBooks = shoppingCartBooks;
     }
 }

@@ -1,9 +1,6 @@
 package com.geektext.geektext_backend_api.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.*;
-import org.apache.catalina.User;
 
 @Entity
 @Table(name = "ratings")
@@ -12,7 +9,7 @@ public class RatingsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rating_id")
-    private Long rating_id;
+    private Long ratingId;
 
     @Column(name = "rating")
     private Long rating;
@@ -23,22 +20,22 @@ public class RatingsEntity {
 
     @ManyToOne
     @JoinColumn(name = "isbn")
-    private BookEntity isbn;
+    private BookEntity book;
 
     public RatingsEntity() {}
 
-    public RatingsEntity(Long rating, BookEntity isbn, UserEntity user) {
+    public RatingsEntity(Long rating, BookEntity book, UserEntity user) {
         this.rating = rating;
-        this.isbn = isbn;
+        this.book = book;
         this.user = user;
     }
 
     public Long getRatingId() {
-        return rating_id;
+        return ratingId;
     }
 
-    public void setRatingId(Long rating_id) {
-        this.rating_id = rating_id;
+    public void setRatingId(Long ratingId) {
+        this.ratingId = ratingId;
     }
 
     public Long getRating() {
@@ -49,19 +46,19 @@ public class RatingsEntity {
         this.rating = rating;
     }
 
-    public BookEntity getIsbn() {
-        return isbn;
+    public BookEntity getBook() {
+        return book;
     }
 
-    public void setIsbn(BookEntity isbn) {
-        this.isbn = isbn;
+    public void setBook(BookEntity book) {
+        this.book = book;
     }
 
-    public void setUser_id(UserEntity user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 
-    public UserEntity getUser_id() {
+    public UserEntity getUser() {
         return user;
     }
 }
