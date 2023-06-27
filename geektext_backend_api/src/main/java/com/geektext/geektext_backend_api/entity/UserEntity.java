@@ -39,9 +39,7 @@ public class UserEntity {
         this.home_address = home_address;
     }
 
-    public UserEntity() {
-
-    }
+    public UserEntity() {}
 
     public Long getUser_id() {
         return user_id;
