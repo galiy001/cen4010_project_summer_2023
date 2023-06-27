@@ -3,6 +3,7 @@ package com.geektext.geektext_backend_api.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -28,23 +29,27 @@ public class BookEntity {
     private Double price;
 
     @Column(name = "copies_sold")
-    private Integer copiesSold;
+    private int copiesSold;
 
     @Column(name = "discount_percent")
     private Double discountPercent;
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
-    private PublisherEntity publisher_id;
+    private PublisherEntity publisher;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
     private AuthorEntity author_id;
 
+    @OneToMany(mappedBy = "book")
+    private Set<RatingsEntity> ratings;
+
+
     public BookEntity() {}
 
     public BookEntity(String isbn, String name, String description, String genre, Date datePublished,
-                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher_id, AuthorEntity author_id) {
+                      Double price, int copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author_id, Set<RatingsEntity> ratings) {
         this.isbn = isbn;
         this.name = name;
         this.description = description;
@@ -53,8 +58,9 @@ public class BookEntity {
         this.price = price;
         this.copiesSold = copiesSold;
         this.discountPercent = discountPercent;
-        this.publisher_id = publisher_id;
+        this.publisher = publisher;
         this.author_id = author_id;
+        this.ratings = ratings;
     }
 
     public String getIsbn() {
@@ -122,11 +128,11 @@ public class BookEntity {
     }
 
     public PublisherEntity getPublisher_id() {
-        return publisher_id;
+        return publisher;
     }
 
-    public void setPublisher_id(PublisherEntity publisher_id) {
-        this.publisher_id = publisher_id;
+    public void setPublisher_id(PublisherEntity publisher) {
+        this.publisher = publisher;
     }
 
     public AuthorEntity getAuthor_id() {
@@ -135,5 +141,13 @@ public class BookEntity {
 
     public void setAuthor_id(AuthorEntity author_id) {
         this.author_id = author_id;
+    }
+
+    public void SetRating( Set<RatingsEntity> rating) {
+        this.ratings = rating;
+    }
+
+    public Set<RatingsEntity> getRatings() {
+        return ratings;
     }
 }

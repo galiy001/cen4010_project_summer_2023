@@ -20,11 +20,11 @@ public class CommentsEntity {
 
     @ManyToOne
     @JoinColumn(name = "isbn")
-    private BookEntity isbn;
+    private BookEntity book;
 
-    public CommentsEntity(String comment, UserEntity user_id, BookEntity isbn){
+    public CommentsEntity(String comment, UserEntity user_id, BookEntity book){
         this.comment = comment;
-        this.isbn = isbn;
+        this.book = book;
         this.user_id = user_id;
     }
 
@@ -54,11 +54,11 @@ public class CommentsEntity {
         this.user_id = user_id;
     }
 
-    public BookEntity getIsbn() {
-        return isbn;
+    public BookEntity getBook() {
+        return book;
     }
 
-    public void setIsbn(BookEntity isbn) {
-        this.isbn = isbn;
+    public void setBook(BookEntity book) {
+        this.book = book;
     }
 }
