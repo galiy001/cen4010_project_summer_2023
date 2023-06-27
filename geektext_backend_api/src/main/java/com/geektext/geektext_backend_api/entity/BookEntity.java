@@ -1,5 +1,6 @@
 package com.geektext.geektext_backend_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -34,17 +35,19 @@ public class BookEntity {
     @Column(name = "discount_percent")
     private Double discountPercent;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private PublisherEntity publisher;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "author_id")
     private AuthorEntity author_id;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "book")
     private Set<RatingsEntity> ratings;
-
 
     public BookEntity() {}
 

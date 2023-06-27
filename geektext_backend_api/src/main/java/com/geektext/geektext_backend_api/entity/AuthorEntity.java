@@ -2,6 +2,7 @@ package com.geektext.geektext_backend_api.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,7 @@ public class AuthorEntity {
     @Column(name = "author_name")
     private String author_name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author_id")
     private List<BookEntity> books;
 

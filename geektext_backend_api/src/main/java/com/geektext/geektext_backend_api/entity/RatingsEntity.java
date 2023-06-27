@@ -2,6 +2,7 @@ package com.geektext.geektext_backend_api.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +28,7 @@ public class RatingsEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "isbn")
     private BookEntity book;

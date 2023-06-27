@@ -48,6 +48,4 @@ public class BookController {
         return bookService.getAverageRatingForBook(isbn);
     }
 
-
-
 }
