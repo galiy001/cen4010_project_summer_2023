@@ -23,8 +23,13 @@ public class UserController {
     }
 
     @GetMapping("/{user_id}")
-    public Optional<UserEntity> searchByUserId(@PathVariable("user_id") Long user_id) {
-        return userService.searchByUserId(user_id);
+    public Optional<UserEntity> searchByUserId(@PathVariable("user_id") Long userId) {
+        return userService.searchByUserId(userId);
+    }
+
+    @GetMapping("/username/{username}")
+    public Optional<UserEntity> searchByUsername(@PathVariable("username") String username) {
+        return userService.searchByUsername(username);
     }
 
     @PostMapping
@@ -38,8 +43,8 @@ public class UserController {
     }
 
     @DeleteMapping("/{user_id}")
-    public void deleteUser(@PathVariable("user_id") Long user_id) {
-        userService.deleteUser(user_id);
+    public void deleteUser(@PathVariable("user_id") Long userId) {
+        userService.deleteUser(userId);
     }
 
 }
