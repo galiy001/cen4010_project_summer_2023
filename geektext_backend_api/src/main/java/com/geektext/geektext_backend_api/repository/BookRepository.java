@@ -1,6 +1,7 @@
 package com.geektext.geektext_backend_api.repository;
 
 import com.geektext.geektext_backend_api.entity.BookEntity;
+import com.geektext.geektext_backend_api.entity.PublisherEntity;
 import com.geektext.geektext_backend_api.entity.RatingsEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,5 +26,5 @@ public interface BookRepository extends JpaRepository<BookEntity, String> {
     @Query("SELECT b FROM BookEntity b JOIN b.ratings r WHERE r.rating >= :rating")
     List<BookEntity> findByRatingOrHigher(@Param("rating") Long rating);
 
-    List<BookEntity> findByPublisherId(int publisherId);
+    List<BookEntity> findByPublisher(PublisherEntity publisher);
 }
