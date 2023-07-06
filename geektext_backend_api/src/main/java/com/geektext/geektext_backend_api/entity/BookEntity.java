@@ -62,8 +62,7 @@ public class BookEntity {
     public BookEntity() {}
 
     public BookEntity(String isbn, String name, String description, String genre, Date datePublished,
-                      Double price, int copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author_id, Set<RatingsEntity> ratings) {
-                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author) {
+                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author, Set<RatingsEntity> ratings) {
         this.isbn = isbn;
         this.name = name;
         this.description = description;
@@ -74,6 +73,7 @@ public class BookEntity {
         this.discountPercent = discountPercent;
         this.publisher = publisher;
         this.author = author;
+        this.ratings = ratings;
     }
 
     public String getIsbn() {
@@ -156,7 +156,7 @@ public class BookEntity {
         this.author = author;
     }
 
-    public void SetRating( Set<RatingsEntity> rating) {
+    public void SetRating(Set<RatingsEntity> rating) {
         this.ratings = rating;
     }
 

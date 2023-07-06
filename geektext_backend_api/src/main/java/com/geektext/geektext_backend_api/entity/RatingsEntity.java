@@ -74,8 +74,4 @@ public class RatingsEntity {
     public UserEntity getUser() {
         return user;
     }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
 }

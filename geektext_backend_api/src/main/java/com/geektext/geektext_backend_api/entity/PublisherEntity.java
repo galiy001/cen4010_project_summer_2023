@@ -20,13 +20,9 @@ public class PublisherEntity {
     @Column(name = "publisher_name")
     private String publisherName;
 
-    @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
-    private List<BookEntity> books;
-
     @JsonIgnore
     @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
     private List<BookEntity> books;
-
 
     public PublisherEntity() {}
 
