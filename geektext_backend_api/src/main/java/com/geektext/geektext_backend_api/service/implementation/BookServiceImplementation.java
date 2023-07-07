@@ -149,6 +149,6 @@ public class BookServiceImplementation implements BookService {
             }
 
             public List<BookEntity> findByRatingOrHigher (Long rating){
-                return bookRepository.findByRating_RatingValueGreaterThanEqual(rating);
+                return bookRepository.findByRatingOrHigher(rating);
             }
         }

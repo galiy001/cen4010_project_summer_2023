@@ -21,11 +21,9 @@ public interface BookRepository extends JpaRepository<BookEntity, String> {
     @Query("SELECT b FROM BookEntity b ORDER BY b.copiesSold DESC")
     List<BookEntity> findTopSellers(Pageable pageable);
 
-    @Query("SELECT b FROM BookEntity b JOIN b.ratings r WHERE r.rating >= :rating")
+    @Query("SELECT b FROM BookEntity b JOIN b.rating r WHERE r.rating >= :rating")
     List<BookEntity> findByRatingOrHigher(@Param("rating") Long rating);
 
     List<BookEntity> findByPublisher(PublisherEntity publisher);
-
-    List<BookEntity> findByRating_RatingValueGreaterThanEqual(Long ratingValue);
     
 }

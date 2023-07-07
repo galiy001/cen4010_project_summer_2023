@@ -53,7 +53,6 @@ public class BookController {
         return bookService.getAverageRatingForBook(isbn);
     }
 
-
     @PostMapping
     public void addBook(@RequestBody BookEntity bookEntity) {
         bookService.addBook(bookEntity);
@@ -63,7 +62,6 @@ public class BookController {
     public void updateBook(@PathVariable String isbn, @RequestBody BookEntity bookEntity) {
         bookService.updateBook(isbn, bookEntity);
     }
-
 
     @GetMapping(path = "/genre/{genre}")
     public List<BookEntity> getBooksByGenre(@PathVariable String genre) {
