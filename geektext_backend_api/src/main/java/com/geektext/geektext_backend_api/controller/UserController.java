@@ -37,11 +37,6 @@ public class UserController {
         return userService.createNewUser(userEntity);
     }
 
-    @PutMapping
-    public UserEntity updateUser(@RequestBody UserEntity userEntity) {
-        return userService.updateUser(userEntity);
-    }
-
     @DeleteMapping("/{user_id}")
     public void deleteUser(@PathVariable("user_id") Long userId) {
         userService.deleteUser(userId);
