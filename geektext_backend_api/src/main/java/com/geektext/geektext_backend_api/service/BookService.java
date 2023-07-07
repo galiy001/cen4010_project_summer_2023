@@ -38,5 +38,5 @@ public interface BookService {
 
     public List<BookEntity> findByRatingOrHigher(Long rating);
 
-    String getBookDescriptionByIsbn(String isbn);
+
 }

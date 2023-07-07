@@ -151,13 +151,5 @@ public class BookServiceImplementation implements BookService {
                 return bookRepository.findByRatingOrHigher(rating);
             }
 
-    @Override
-    public String getBookDescriptionByIsbn(String isbn) {
-          Optional<BookEntity> book=bookRepository.findByIsbn(isbn);
-           if(book.isPresent()){
-               BookEntity bookEntity=book.get();
-               return bookEntity.getDescription();
-           }else
-               return null;
-    }
+
 }

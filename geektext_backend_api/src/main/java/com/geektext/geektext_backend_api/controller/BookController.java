@@ -2,17 +2,13 @@ package com.geektext.geektext_backend_api.controller;
 
 import com.geektext.geektext_backend_api.entity.BookEntity;
 import com.geektext.geektext_backend_api.entity.PublisherEntity;
-import com.geektext.geektext_backend_api.entity.RatingsEntity;
 import com.geektext.geektext_backend_api.entity.CommentsEntity;
-import com.geektext.geektext_backend_api.repository.BookRepository;
 import com.geektext.geektext_backend_api.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,18 +89,12 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.CREATED).body(book);
     }
 
-    @GetMapping("/books/{isbn}/description")
-    public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {
-        // Retrieve book details based on the provided ISBN
-        String bookDescription = bookService.getBookDescriptionByIsbn(isbn);
+    @GetMapping("/books/{isbn}")
+    public BookEntity getBookDetails(@PathVariable("isbn") String isbn) {
 
-        if (bookDescription != null) {
+       Optional< BookEntity> book = bookService.findBookByIsbn(isbn);
+       return book.orElse(null);
 
-            return ResponseEntity.ok(bookDescription);
-        } else {
-
-            return ResponseEntity.notFound().build();
-        }
     }
 
 
