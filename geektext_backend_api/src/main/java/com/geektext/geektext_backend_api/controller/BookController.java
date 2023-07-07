@@ -4,11 +4,15 @@ import com.geektext.geektext_backend_api.entity.BookEntity;
 import com.geektext.geektext_backend_api.entity.PublisherEntity;
 import com.geektext.geektext_backend_api.entity.RatingsEntity;
 import com.geektext.geektext_backend_api.entity.CommentsEntity;
+import com.geektext.geektext_backend_api.repository.BookRepository;
 import com.geektext.geektext_backend_api.service.BookService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,5 +85,11 @@ public class BookController {
     @PutMapping("/discount/{discountPercent}/{publisher_id}")
     public void discountBooksByPublisher(@PathVariable double discountPercent, @PathVariable PublisherEntity publisher) {
         bookService.discountBooksByPublisher(discountPercent, publisher);
+    }
+
+    @PostMapping("/books")
+    public ResponseEntity<BookEntity> createBook(@RequestBody BookEntity book) {
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(book);
     }
 }
