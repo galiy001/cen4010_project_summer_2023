@@ -47,4 +47,9 @@ public class UserController {
         userService.deleteUser(userId);
     }
 
+    @PutMapping("/username/{username}")
+    public void updateUser(@PathVariable("username") String username, @RequestBody UserEntity userEntity) {
+        userService.updateUserByUsername(username, userEntity);
+    }
+
 }

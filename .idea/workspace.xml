@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="079ecfd6-c042-47e5-a5a7-e65e49691520" name="Changes" comment="" />
+    <list default="true" id="079ecfd6-c042-47e5-a5a7-e65e49691520" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/CreditCardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/repository/CreditCardRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/CreditCardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/implementation/CreditCardServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/ShoppingCartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorBookEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorBookEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartBookEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartBookEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/implementation/UserServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/implementation/UserServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/service/implementation/UserServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/service/implementation/UserServiceImplementation.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +41,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/UserController.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -31,6 +54,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2QwRuNMmVSg1oYeXTYfK9ROVUGl" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -39,14 +65,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/heida/Desktop/cen4010_project_summer_2023/geektext_backend_api"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/heida/Desktop/cen4010_project_summer_2023/geektext_backend_api&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;1496e0bc4cf70028329a3ba368b1c3ad&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="GeektextBackendApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="geektext_backend_api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.geektext.geektext_backend_api.GeektextBackendApiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,8 +101,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686262879828</updated>
+      <workItem from="1687904940696" duration="3212000" />
+      <workItem from="1688230348657" duration="8400000" />
+      <workItem from="1688348931038" duration="2575000" />
+      <workItem from="1688678617880" duration="607000" />
+      <workItem from="1688680512654" duration="3519000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
