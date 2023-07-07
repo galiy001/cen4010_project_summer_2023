@@ -95,7 +95,6 @@ public class BookController {
 
     @GetMapping("/books/{isbn}/description")
     public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {
-        // Retrieve book details based on the provided ISBN
         String bookDescription = bookService.getBookDescriptionByIsbn(isbn);
 
         if (bookDescription != null) {

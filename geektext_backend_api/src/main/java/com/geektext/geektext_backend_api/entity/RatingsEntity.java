@@ -34,7 +34,8 @@ public class RatingsEntity {
     @JoinColumn(name = "isbn")
     private BookEntity book;
 
-    public RatingsEntity() {}
+    public RatingsEntity() {
+    }
 
     public RatingsEntity(Long rating, BookEntity book, UserEntity user) {
         this.rating = rating;

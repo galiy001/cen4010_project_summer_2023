@@ -25,13 +25,14 @@ public class CommentsEntity {
     @JoinColumn(name = "isbn")
     private BookEntity book;
 
-    public CommentsEntity(String comment, UserEntity user, BookEntity book){
+    public CommentsEntity(String comment, UserEntity user, BookEntity book) {
         this.comment = comment;
         this.book = book;
         this.user = user;
     }
 
-    public CommentsEntity() {}
+    public CommentsEntity() {
+    }
 
     public Long getCommentId() {
         return commentId;

@@ -49,17 +49,18 @@ public class BookEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AuthorBookEntity> authorBooks = new ArrayList<>();
+    private final List<AuthorBookEntity> authorBooks = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ShoppingCartBookEntity> shoppingCartBooks = new ArrayList<>();
+    private final List<ShoppingCartBookEntity> shoppingCartBooks = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "book")
     private Set<RatingsEntity> rating;
 
-    public BookEntity() {}
+    public BookEntity() {
+    }
 
     public BookEntity(String isbn, String name, String description, String genre, Date datePublished,
                       Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author, Set<RatingsEntity> rating) {

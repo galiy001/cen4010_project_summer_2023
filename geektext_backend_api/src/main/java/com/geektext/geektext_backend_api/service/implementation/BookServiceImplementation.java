@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.List;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -31,7 +32,7 @@ public class BookServiceImplementation implements BookService {
         this.ratingRepository = ratingRepository;
     }
 
-    public BookEntity getBookByIsbn(String isbn){
+    public BookEntity getBookByIsbn(String isbn) {
         return bookRepository.findById(isbn)
                 .orElseThrow(() -> new IllegalArgumentException("Book not found."));
     }
@@ -45,12 +46,12 @@ public class BookServiceImplementation implements BookService {
         return commentRepository.findByBookIsbn(book.getIsbn());
     }
 
-    public void rateBook(String isbn, Long userId, Long rating){
+    public void rateBook(String isbn, Long userId, Long rating) {
         Optional<UserEntity> userOptional = userRepository.findById(userId);
-        if(((Optional<?>) userOptional).isPresent()){
+        if (userOptional.isPresent()) {
             UserEntity user = userOptional.get();
             BookEntity book = getBookByIsbn(isbn);
-            if(book != null){
+            if (book != null) {
                 if (rating < 1 || rating > 5) {
                     throw new IllegalArgumentException("Rating must be between 1 and 5.");
                 }
@@ -80,84 +81,85 @@ public class BookServiceImplementation implements BookService {
             throw new IllegalArgumentException("Book not found.");
         }
     }
-            @Override
-            public List<BookEntity> getAllBooks () {
-                return bookRepository.findAll();
-            }
 
-            @Override
-            public Optional<BookEntity> findBookByIsbn (String isbn){
-                return bookRepository.findByIsbn(isbn);
-            }
+    @Override
+    public List<BookEntity> getAllBooks() {
+        return bookRepository.findAll();
+    }
 
-            @Override
-            public void addBook (BookEntity book){
-                bookRepository.save(book);
-            }
+    @Override
+    public Optional<BookEntity> findBookByIsbn(String isbn) {
+        return bookRepository.findByIsbn(isbn);
+    }
 
-            @Override
-            public void updateBook (String isbn, BookEntity book){
-                Optional<BookEntity> optionalEntity = bookRepository.findByIsbn(isbn);
-                if (optionalEntity.isPresent()) {
-                    BookEntity existingEntity = optionalEntity.get();
-                    // Assuming all fields should be updated. Adjust as needed.
-                    existingEntity.setName(book.getName());
-                    existingEntity.setAuthor(book.getAuthor());
-                    existingEntity.setGenre(book.getGenre());
-                    existingEntity.setPublisher(book.getPublisher());
-                    existingEntity.setIsbn(book.getIsbn());
-                    bookRepository.save(existingEntity);
-                } else {
-                    throw new RuntimeException("Book with ISBN " + isbn + " not found.");
-                }
-            }
+    @Override
+    public void addBook(BookEntity book) {
+        bookRepository.save(book);
+    }
 
-            public Double getAverageRatingForBook (String isbn){
-                Double avg = ratingRepository.findAverageRatingByBookId(isbn);
-                if (avg == null) {
-                    throw new IllegalArgumentException("No ratings found for this book");
-                }
-                return avg;
-            }
+    @Override
+    public void updateBook(String isbn, BookEntity book) {
+        Optional<BookEntity> optionalEntity = bookRepository.findByIsbn(isbn);
+        if (optionalEntity.isPresent()) {
+            BookEntity existingEntity = optionalEntity.get();
+            // Assuming all fields should be updated. Adjust as needed.
+            existingEntity.setName(book.getName());
+            existingEntity.setAuthor(book.getAuthor());
+            existingEntity.setGenre(book.getGenre());
+            existingEntity.setPublisher(book.getPublisher());
+            existingEntity.setIsbn(book.getIsbn());
+            bookRepository.save(existingEntity);
+        } else {
+            throw new RuntimeException("Book with ISBN " + isbn + " not found.");
+        }
+    }
 
-            public Optional<BookEntity> findByIsbn (String isbn){
-                return null;
-            }
+    public Double getAverageRatingForBook(String isbn) {
+        Double avg = ratingRepository.findAverageRatingByBookId(isbn);
+        if (avg == null) {
+            throw new IllegalArgumentException("No ratings found for this book");
+        }
+        return avg;
+    }
 
-            @Override
-            public List<BookEntity> getBooksByGenre (String genre){
-                return bookRepository.findByGenre(genre);
-            }
+    public Optional<BookEntity> findByIsbn(String isbn) {
+        return null;
+    }
 
-            public List<BookEntity> getTopSellingBooks () {
-                Pageable pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "copiesSold"));
-                return bookRepository.findTopSellers(pageable);
-            }
+    @Override
+    public List<BookEntity> getBooksByGenre(String genre) {
+        return bookRepository.findByGenre(genre);
+    }
 
-            @Override
-            public void discountBooksByPublisher ( double discountPercent, PublisherEntity publisher){
-                List<BookEntity> books = bookRepository.findByPublisher(publisher);
+    public List<BookEntity> getTopSellingBooks() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "copiesSold"));
+        return bookRepository.findTopSellers(pageable);
+    }
 
-                for (BookEntity book : books) {
-                    double currentPrice = book.getPrice();
-                    double discountedPrice = currentPrice - (currentPrice * discountPercent / 100);
+    @Override
+    public void discountBooksByPublisher(double discountPercent, PublisherEntity publisher) {
+        List<BookEntity> books = bookRepository.findByPublisher(publisher);
 
-                    book.setPrice(discountedPrice);
-                    bookRepository.save(book);
-                }
-            }
+        for (BookEntity book : books) {
+            double currentPrice = book.getPrice();
+            double discountedPrice = currentPrice - (currentPrice * discountPercent / 100);
 
-            public List<BookEntity> findByRatingOrHigher (Long rating){
-                return bookRepository.findByRatingOrHigher(rating);
-            }
+            book.setPrice(discountedPrice);
+            bookRepository.save(book);
+        }
+    }
+
+    public List<BookEntity> findByRatingOrHigher(Long rating) {
+        return bookRepository.findByRatingOrHigher(rating);
+    }
 
     @Override
     public String getBookDescriptionByIsbn(String isbn) {
-          Optional<BookEntity> book=bookRepository.findByIsbn(isbn);
-           if(book.isPresent()){
-               BookEntity bookEntity=book.get();
-               return bookEntity.getDescription();
-           }else
-               return null;
+        Optional<BookEntity> book = bookRepository.findByIsbn(isbn);
+        if (book.isPresent()) {
+            BookEntity bookEntity = book.get();
+            return bookEntity.getDescription();
+        } else
+            return null;
     }
 }

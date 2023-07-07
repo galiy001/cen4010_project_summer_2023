@@ -27,7 +27,8 @@ public class AuthorEntity {
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AuthorBookEntity> authorBooks = new ArrayList<>();
 
-    public AuthorEntity() {}
+    public AuthorEntity() {
+    }
 
     public Long getAuthorId() {
         return authorId;
