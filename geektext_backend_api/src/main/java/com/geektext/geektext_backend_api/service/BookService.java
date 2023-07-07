@@ -37,5 +37,6 @@ public interface BookService {
     public void discountBooksByPublisher(double discountPercent, PublisherEntity publisher);
 
     public List<BookEntity> findByRatingOrHigher(Long rating);
-	
+
+    String getBookDescriptionByIsbn(String isbn);
 }

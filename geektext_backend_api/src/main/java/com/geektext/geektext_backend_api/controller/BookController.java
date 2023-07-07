@@ -92,4 +92,20 @@ public class BookController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(book);
     }
+
+    @GetMapping("/books/{isbn}/description")
+    public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {
+        // Retrieve book details based on the provided ISBN
+        String bookDescription = bookService.getBookDescriptionByIsbn(isbn);
+
+        if (bookDescription != null) {
+
+            return ResponseEntity.ok(bookDescription);
+        } else {
+
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }
