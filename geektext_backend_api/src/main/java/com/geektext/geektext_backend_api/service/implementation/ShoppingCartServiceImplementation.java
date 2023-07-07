@@ -1,6 +1,7 @@
 package com.geektext.geektext_backend_api.service.implementation;
 
 import com.geektext.geektext_backend_api.entity.BookEntity;
+import com.geektext.geektext_backend_api.entity.ShoppingCartEntity;
 import com.geektext.geektext_backend_api.entity.UserEntity;
 import com.geektext.geektext_backend_api.repository.ShoppingCartRepository;
 import com.geektext.geektext_backend_api.service.BookService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ShoppingCartServiceImplementation implements ShoppingCartService {

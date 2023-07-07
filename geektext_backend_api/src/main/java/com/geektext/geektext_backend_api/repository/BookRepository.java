@@ -27,4 +27,7 @@ public interface BookRepository extends JpaRepository<BookEntity, String> {
     List<BookEntity> findByRatingOrHigher(@Param("rating") Long rating);
 
     List<BookEntity> findByPublisher(PublisherEntity publisher);
+
+    List<BookEntity> findByRating_RatingValueGreaterThanEqual(Long ratingValue);
+    
 }
