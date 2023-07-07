@@ -1,5 +1,8 @@
 package com.geektext.geektext_backend_api.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,9 +20,9 @@ public class PublisherEntity {
     @Column(name = "publisher_name")
     private String publisherName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
     private List<BookEntity> books;
-
 
     public PublisherEntity() {}
 

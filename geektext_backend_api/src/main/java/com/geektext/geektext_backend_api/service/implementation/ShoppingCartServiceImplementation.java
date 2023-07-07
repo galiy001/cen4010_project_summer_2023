@@ -1,7 +1,6 @@
 package com.geektext.geektext_backend_api.service.implementation;
 
 import com.geektext.geektext_backend_api.entity.BookEntity;
-import com.geektext.geektext_backend_api.entity.ShoppingCartEntity;
 import com.geektext.geektext_backend_api.entity.UserEntity;
 import com.geektext.geektext_backend_api.repository.ShoppingCartRepository;
 import com.geektext.geektext_backend_api.service.BookService;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ShoppingCartServiceImplementation implements ShoppingCartService {
@@ -39,7 +37,7 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
     @Override
     public void addBookToCart(Long userId, String isbn) {
         Optional<UserEntity> user = userService.searchByUserId(userId);
-        Optional<BookEntity> book = bookService.findBookByIsbn(isbn);
+        Optional<BookEntity> book = bookService.findByIsbn(isbn);
         if(user.isPresent() && book.isPresent()) {
             user.get().getShoppingCart().getBooks().add(book.get());
             userService.updateUser(user.get());
@@ -49,7 +47,7 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
     @Override
     public void removeBookFromCart(Long userId, String isbn) {
         Optional<UserEntity> user = userService.searchByUserId(userId);
-        Optional<BookEntity> book = bookService.findBookByIsbn(isbn);
+        Optional<BookEntity> book = bookService.findByIsbn(isbn);
         if(user.isPresent() && book.isPresent()) {
             user.get().getShoppingCart().getBooks().remove(book.get());
             userService.updateUser(user.get());

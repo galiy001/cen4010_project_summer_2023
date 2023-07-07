@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 import java.util.List;
 
 @Entity
@@ -31,7 +32,7 @@ public class BookEntity {
     private Double price;
 
     @Column(name = "copies_sold")
-    private Integer copiesSold;
+    private int copiesSold;
 
     @Column(name = "discount_percent")
     private Double discountPercent;
@@ -54,10 +55,14 @@ public class BookEntity {
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ShoppingCartBookEntity> shoppingCartBooks = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "book")
+    private Set<RatingsEntity> ratings;
+
     public BookEntity() {}
 
     public BookEntity(String isbn, String name, String description, String genre, Date datePublished,
-                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author) {
+                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author, Set<RatingsEntity> ratings) {
         this.isbn = isbn;
         this.name = name;
         this.description = description;
@@ -68,6 +73,7 @@ public class BookEntity {
         this.discountPercent = discountPercent;
         this.publisher = publisher;
         this.author = author;
+        this.ratings = ratings;
     }
 
     public String getIsbn() {
@@ -148,5 +154,13 @@ public class BookEntity {
 
     public void setAuthor(AuthorEntity author) {
         this.author = author;
+    }
+
+    public void SetRating(Set<RatingsEntity> rating) {
+        this.ratings = rating;
+    }
+
+    public Set<RatingsEntity> getRatings() {
+        return ratings;
     }
 }

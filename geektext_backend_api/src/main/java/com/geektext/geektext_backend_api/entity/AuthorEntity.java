@@ -1,5 +1,6 @@
 package com.geektext.geektext_backend_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -18,9 +19,15 @@ public class AuthorEntity {
     @Column(name = "author_name")
     private String authorName;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "author")
+    private List<BookEntity> books;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AuthorBookEntity> authorBooks = new ArrayList<>();
+
+    public AuthorEntity() {}
 
     public Long getAuthorId() {
         return authorId;
