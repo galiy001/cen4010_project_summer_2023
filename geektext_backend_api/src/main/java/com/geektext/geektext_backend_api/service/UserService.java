@@ -1,5 +1,6 @@
 package com.geektext.geektext_backend_api.service;
 
+import com.geektext.geektext_backend_api.entity.BookEntity;
 import com.geektext.geektext_backend_api.entity.UserEntity;
 
 import java.util.List;

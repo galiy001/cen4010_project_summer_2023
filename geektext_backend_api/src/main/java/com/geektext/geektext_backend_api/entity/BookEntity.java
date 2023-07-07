@@ -57,12 +57,12 @@ public class BookEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = "book")
-    private Set<RatingsEntity> ratings;
+    private Set<RatingsEntity> rating;
 
     public BookEntity() {}
 
     public BookEntity(String isbn, String name, String description, String genre, Date datePublished,
-                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author, Set<RatingsEntity> ratings) {
+                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author, Set<RatingsEntity> rating) {
         this.isbn = isbn;
         this.name = name;
         this.description = description;
@@ -73,7 +73,7 @@ public class BookEntity {
         this.discountPercent = discountPercent;
         this.publisher = publisher;
         this.author = author;
-        this.ratings = ratings;
+        this.rating = rating;
     }
 
     public String getIsbn() {
@@ -157,10 +157,10 @@ public class BookEntity {
     }
 
     public void SetRating(Set<RatingsEntity> rating) {
-        this.ratings = rating;
+        this.rating = rating;
     }
 
     public Set<RatingsEntity> getRatings() {
-        return ratings;
+        return rating;
     }
 }

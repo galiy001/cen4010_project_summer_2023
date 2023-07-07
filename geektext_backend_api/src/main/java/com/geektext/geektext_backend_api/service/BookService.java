@@ -2,10 +2,8 @@ package com.geektext.geektext_backend_api.service;
 
 import com.geektext.geektext_backend_api.entity.BookEntity;
 import com.geektext.geektext_backend_api.entity.CommentsEntity;
-import com.geektext.geektext_backend_api.entity.RatingsEntity;
-import com.geektext.geektext_backend_api.entity.UserEntity;
+import com.geektext.geektext_backend_api.entity.PublisherEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -25,4 +23,19 @@ public interface BookService {
     Double getAverageRatingForBook(String isbn);
 
     Optional<BookEntity> findByIsbn(String isbn);
+
+    public Optional<BookEntity> findBookByIsbn(String isbn);
+
+    void addBook(BookEntity bookEntity);
+
+    void updateBook(String isbn, BookEntity bookEntity);
+
+    List<BookEntity> getBooksByGenre(String genre);
+
+    List<BookEntity> getTopSellingBooks();
+
+    public void discountBooksByPublisher(double discountPercent, PublisherEntity publisher);
+
+    public List<BookEntity> findByRatingOrHigher(Long rating);
+	
 }

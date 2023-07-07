@@ -1,8 +1,6 @@
 package com.geektext.geektext_backend_api.service.implementation;
 
-import com.geektext.geektext_backend_api.entity.BookEntity;
-import com.geektext.geektext_backend_api.entity.CommentsEntity;
-import com.geektext.geektext_backend_api.entity.RatingsEntity;
+import com.geektext.geektext_backend_api.entity.*;
 import com.geektext.geektext_backend_api.repository.BookRepository;
 import com.geektext.geektext_backend_api.repository.CommentRepository;
 import com.geektext.geektext_backend_api.repository.RatingRepository;
@@ -10,10 +8,13 @@ import com.geektext.geektext_backend_api.repository.UserRepository;
 import com.geektext.geektext_backend_api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.geektext.geektext_backend_api.entity.UserEntity;
 
-import java.util.List;
+import java.awt.print.Book;
 import java.util.Optional;
+import java.util.List;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 @Service
 public class BookServiceImplementation implements BookService {
@@ -29,10 +30,6 @@ public class BookServiceImplementation implements BookService {
         this.userRepository = userRepository;
         this.commentRepository = commentRepository;
         this.ratingRepository = ratingRepository;
-    }
-
-    public List<BookEntity> getAllBooks(){
-        return bookRepository.findAll();
     }
 
     public BookEntity getBookByIsbn(String isbn){
@@ -71,31 +68,87 @@ public class BookServiceImplementation implements BookService {
         }
     }
 
-    public void commentBook(String isbn, Long userId, String comment){
+    public void commentBook(String isbn, Long userId, String comment) {
         BookEntity book = getBookByIsbn(isbn);
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found."));
 
-        if(book != null){
+
+        if (book != null) {
             CommentsEntity newComment = new CommentsEntity(comment, user, book);
             commentRepository.save(newComment);
         } else {
             throw new IllegalArgumentException("Book not found.");
         }
     }
+            @Override
+            public List<BookEntity> getAllBooks () {
+                return bookRepository.findAll();
+            }
 
+            @Override
+            public Optional<BookEntity> findBookByIsbn (String isbn){
+                return bookRepository.findByIsbn(isbn);
+            }
 
-    public Double getAverageRatingForBook(String isbn){
-        Double avg = ratingRepository.findAverageRatingByBookId(isbn);
-        if(avg == null){
-            throw new IllegalArgumentException("No ratings found for this book");
+            @Override
+            public void addBook (BookEntity book){
+                bookRepository.save(book);
+            }
+
+            @Override
+            public void updateBook (String isbn, BookEntity book){
+                Optional<BookEntity> optionalEntity = bookRepository.findByIsbn(isbn);
+                if (optionalEntity.isPresent()) {
+                    BookEntity existingEntity = optionalEntity.get();
+                    // Assuming all fields should be updated. Adjust as needed.
+                    existingEntity.setName(book.getName());
+                    existingEntity.setAuthor(book.getAuthor());
+                    existingEntity.setGenre(book.getGenre());
+                    existingEntity.setPublisher(book.getPublisher());
+                    existingEntity.setIsbn(book.getIsbn());
+                    bookRepository.save(existingEntity);
+                } else {
+                    throw new RuntimeException("Book with ISBN " + isbn + " not found.");
+                }
+            }
+
+            public Double getAverageRatingForBook (String isbn){
+                Double avg = ratingRepository.findAverageRatingByBookId(isbn);
+                if (avg == null) {
+                    throw new IllegalArgumentException("No ratings found for this book");
+                }
+                return avg;
+            }
+
+            public Optional<BookEntity> findByIsbn (String isbn){
+                return null;
+            }
+
+            @Override
+            public List<BookEntity> getBooksByGenre (String genre){
+                return bookRepository.findByGenre(genre);
+            }
+
+            public List<BookEntity> getTopSellingBooks () {
+                Pageable pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "copiesSold"));
+                return bookRepository.findTopSellers(pageable);
+            }
+
+            @Override
+            public void discountBooksByPublisher ( double discountPercent, PublisherEntity publisher){
+                List<BookEntity> books = bookRepository.findByPublisher(publisher);
+
+                for (BookEntity book : books) {
+                    double currentPrice = book.getPrice();
+                    double discountedPrice = currentPrice - (currentPrice * discountPercent / 100);
+
+                    book.setPrice(discountedPrice);
+                    bookRepository.save(book);
+                }
+            }
+
+            public List<BookEntity> findByRatingOrHigher (Long rating){
+                return bookRepository.findByRatingOrHigher(rating);
+            }
         }
-        return avg;
-    }
-
-    public Optional<BookEntity> findByIsbn(String isbn) {
-        return null;
-    }
-}
-
-

@@ -41,4 +41,3 @@ public class ShoppingCartController {
         return shoppingCartService.calculateSubtotal(userId);
     }
 }
-
