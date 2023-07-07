@@ -46,4 +46,3 @@ public class AuthorBookEntity {
         this.book = book;
     }
 }
-

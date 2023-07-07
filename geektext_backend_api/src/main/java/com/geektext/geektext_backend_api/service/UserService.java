@@ -14,5 +14,7 @@ public interface UserService {
     UserEntity createNewUser(UserEntity userEntity); //Create a new user.
     UserEntity updateUser(UserEntity userEntity); //Update an existing user.
     void deleteUser(Long userId); //Delete a user.
+    UserEntity updateUserByUsername(String username, UserEntity userEntity); //Update a user's information.
+
 
 }

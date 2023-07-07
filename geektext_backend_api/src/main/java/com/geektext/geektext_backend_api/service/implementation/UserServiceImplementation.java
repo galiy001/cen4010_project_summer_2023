@@ -46,4 +46,28 @@ public class UserServiceImplementation implements UserService {
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }
+
+    @Override
+    public UserEntity updateUserByUsername(String username, UserEntity userEntity) {
+        Optional<UserEntity> existingUserOptional = userRepository.findByUsername(username);
+
+        if (existingUserOptional.isPresent()) {
+            UserEntity existingUser = existingUserOptional.get();
+
+            // Update the fields of existingUser with the fields of userEntity.
+            // For example:
+            existingUser.setUsername(userEntity.getUsername());
+            existingUser.setPassword(userEntity.getPassword());
+            existingUser.setFirstName(userEntity.getFirstName());
+            existingUser.setLastName(userEntity.getLastName());
+            existingUser.setHomeAddress(userEntity.getHomeAddress());
+
+            // Update the user in the database.
+            userRepository.save(existingUser);
+
+            return existingUser;
+        } else {
+            throw new RuntimeException("User not found with username: " + username);
+        }
+    }
 }
