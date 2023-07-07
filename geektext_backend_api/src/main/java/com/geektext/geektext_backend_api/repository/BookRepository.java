@@ -2,8 +2,6 @@ package com.geektext.geektext_backend_api.repository;
 
 import com.geektext.geektext_backend_api.entity.BookEntity;
 import com.geektext.geektext_backend_api.entity.PublisherEntity;
-import com.geektext.geektext_backend_api.entity.RatingsEntity;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

@@ -1,6 +1,7 @@
 package com.geektext.geektext_backend_api.controller;
 
 import com.geektext.geektext_backend_api.entity.BookEntity;
+import com.geektext.geektext_backend_api.entity.PublisherEntity;
 import com.geektext.geektext_backend_api.entity.RatingsEntity;
 import com.geektext.geektext_backend_api.entity.CommentsEntity;
 import com.geektext.geektext_backend_api.service.BookService;
@@ -80,7 +81,7 @@ public class BookController {
     }
 
     @PutMapping("/discount/{discountPercent}/{publisher_id}")
-    public void discountBooksByPublisher(@PathVariable double discountPercent, @PathVariable int publisher_id) {
-        bookService.discountBooksByPublisher(discountPercent, publisher_id);
+    public void discountBooksByPublisher(@PathVariable double discountPercent, @PathVariable PublisherEntity publisher) {
+        bookService.discountBooksByPublisher(discountPercent, publisher);
     }
 }

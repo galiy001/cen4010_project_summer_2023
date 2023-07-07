@@ -2,10 +2,9 @@ package com.geektext.geektext_backend_api.service;
 
 import com.geektext.geektext_backend_api.entity.BookEntity;
 import com.geektext.geektext_backend_api.entity.CommentsEntity;
-import com.geektext.geektext_backend_api.entity.RatingsEntity;
-import com.geektext.geektext_backend_api.entity.UserEntity;
+import com.geektext.geektext_backend_api.entity.PublisherEntity;
 import org.springframework.stereotype.Service;
-List;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,7 +34,7 @@ public interface BookService {
 
     List<BookEntity> getTopSellingBooks();
 
-    public void discountBooksByPublisher(double discountPercent, int publisher_id);
+    public void discountBooksByPublisher(double discountPercent, PublisherEntity publisher);
 
     public List<BookEntity> findByRatingOrHigher(Long rating);
 	
