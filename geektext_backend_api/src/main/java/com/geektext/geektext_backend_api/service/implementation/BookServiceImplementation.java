@@ -7,6 +7,7 @@ import com.geektext.geektext_backend_api.entity.RatingsEntity;
 import com.geektext.geektext_backend_api.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.Optional;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +28,7 @@ public class BookServiceImplementation implements BookService {
     }
 
     @Override
-    public Optional<BookEntity> getBookByIsbn(String isbn) {
+    public Optional<BookEntity> findBookByIsbn(String isbn) {
         return bookRepository.findByIsbn(isbn);
     }
 
@@ -43,9 +44,9 @@ public class BookServiceImplementation implements BookService {
             BookEntity existingEntity = optionalEntity.get();
             // Assuming all fields should be updated. Adjust as needed.
             existingEntity.setName(bookEntity.getName());
-            existingEntity.setAuthor_id(bookEntity.getAuthor_id());
+            existingEntity.setAuthor(bookEntity.getAuthor());
             existingEntity.setGenre(bookEntity.getGenre());
-            existingEntity.setPublisher_id(bookEntity.getPublisher_id());
+            existingEntity.setPublisher(bookEntity.getPublisher());
             existingEntity.setIsbn(bookEntity.getIsbn());
             bookRepository.save(existingEntity);
         } else {
@@ -81,10 +82,10 @@ public class BookServiceImplementation implements BookService {
             bookRepository.save(book);
         }
     }
-    
-	@Override
-	public List<BookEntity> findByRatingOrHigher(Long rating) {
-		return bookRepository.findByRatingOrHigher(rating);
-	}
+
+    public List<BookEntity> findByRatingOrHigher(Long rating) {
+        return bookRepository.findByRating_RatingValueGreaterThanEqual(rating);
+    }
+
 
 }

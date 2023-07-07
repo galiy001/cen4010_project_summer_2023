@@ -1,9 +1,11 @@
 package com.geektext.geektext_backend_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "books")
@@ -29,27 +31,38 @@ public class BookEntity {
     private Double price;
 
     @Column(name = "copies_sold")
-    private int copiesSold;
+    private Integer copiesSold;
 
     @Column(name = "discount_percent")
     private Double discountPercent;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private PublisherEntity publisher;
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "rating_id")
+    private RatingsEntity rating;
 
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private AuthorEntity author_id;
-    
-    @OneToMany(mappedBy = "book")
-    private Set<RatingsEntity> ratings;
+    private AuthorEntity author;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AuthorBookEntity> authorBooks = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ShoppingCartBookEntity> shoppingCartBooks = new ArrayList<>();
 
     public BookEntity() {}
 
     public BookEntity(String isbn, String name, String description, String genre, Date datePublished,
-                      Double price, int copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author_id, Set<RatingsEntity> ratings) {
+                      Double price, Integer copiesSold, Double discountPercent, PublisherEntity publisher, AuthorEntity author, RatingsEntity rating ) {
         this.isbn = isbn;
         this.name = name;
         this.description = description;
@@ -59,8 +72,8 @@ public class BookEntity {
         this.copiesSold = copiesSold;
         this.discountPercent = discountPercent;
         this.publisher = publisher;
-        this.author_id = author_id;
-        this.ratings = ratings;
+        this.author = author;
+        this.rating = rating;
     }
 
     public String getIsbn() {
@@ -127,27 +140,27 @@ public class BookEntity {
         this.discountPercent = discountPercent;
     }
 
-    public PublisherEntity getPublisher_id() {
+    public PublisherEntity getPublisher() {
         return publisher;
     }
 
-    public void setPublisher_id(PublisherEntity publisher) {
+    public void setPublisher(PublisherEntity publisher) {
         this.publisher = publisher;
     }
 
-    public AuthorEntity getAuthor_id() {
-        return author_id;
+    public AuthorEntity getAuthor() {
+        return author;
     }
 
-    public void setAuthor_id(AuthorEntity author_id) {
-        this.author_id = author_id;
+    public void setAuthor(AuthorEntity author) {
+        this.author = author;
     }
-    
-    public void SetRating( Set<RatingsEntity> rating) {
-    	this.ratings = rating;
+
+    public void setRating(RatingsEntity rating) {
+        this.rating = rating;
     }
-    
-    public Set<RatingsEntity> getRatings() {
-    	return ratings;
+
+    public RatingsEntity getRating() {
+        return rating;
     }
 }

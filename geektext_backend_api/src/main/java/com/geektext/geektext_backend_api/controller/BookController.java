@@ -27,7 +27,7 @@ public class BookController {
 
     @GetMapping(path = "/{isbn}")
     public Optional<BookEntity> getBookByIsbn(@PathVariable String isbn) {
-        return bookService.getBookByIsbn(isbn);
+        return bookService.findBookByIsbn(isbn);
     }
 
     @PostMapping

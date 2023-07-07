@@ -7,9 +7,11 @@ import java.util.Optional;
 
 public interface BookService {
     List<BookEntity> getAllBooks();
-    public Optional<BookEntity> getBookByIsbn(String isbn);
+    public Optional<BookEntity> findBookByIsbn(String isbn);
     void addBook(BookEntity bookEntity);
     void updateBook(String isbn, BookEntity bookEntity);
+
+
     
 
     List<BookEntity> getBooksByGenre(String genre);
@@ -17,7 +19,7 @@ public interface BookService {
     List<BookEntity> getTopSellingBooks();
 
     public void discountBooksByPublisher(double discountPercent, int publisher_id);
-    
-	List<BookEntity> findByRatingOrHigher(Long rating);
+
+    public List<BookEntity> findByRatingOrHigher(Long rating);
 	
 }

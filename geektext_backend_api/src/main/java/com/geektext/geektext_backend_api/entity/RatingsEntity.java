@@ -1,46 +1,34 @@
 package com.geektext.geektext_backend_api.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-
-
+import java.util.List;
 
 @Entity
 @Table(name = "ratings")
 public class RatingsEntity {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rating_id")
     private Long ratingId;
+
+    @Column(name = "rating")
+    private Long rating;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @ManyToOne
-    @JoinColumn(name = "isbn")
-    private BookEntity book;
-    
-    @Column(name = "rating")
-    private Long rating;
+    @OneToMany(mappedBy = "isbn", cascade = CascadeType.ALL)
+    private List<BookEntity> books;
+
 
     public RatingsEntity() {}
 
-    public RatingsEntity( UserEntity user, Long rating) {
-        //this.rating = rating;
-        //this.book = book;
-        this.user = user;
+    public RatingsEntity(Long rating, UserEntity user) {
         this.rating = rating;
+        this.user = user;
     }
 
     public Long getRatingId() {
@@ -59,20 +47,11 @@ public class RatingsEntity {
         this.rating = rating;
     }
 
-    //public BookEntity getBook() {
-        //return book;
-   // }
-
-   // public void setBook(BookEntity book) {
-        //this.book = book;
-    //}
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 
     public UserEntity getUser() {
         return user;
     }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
 }
-

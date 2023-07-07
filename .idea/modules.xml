@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/cen4010_project_summer_2023.iml" filepath="$PROJECT_DIR$/.idea/cen4010_project_summer_2023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geektext_backend_api/geektext_backend_api.iml" filepath="$PROJECT_DIR$/geektext_backend_api/geektext_backend_api.iml" />
     </modules>
   </component>
 </project>
