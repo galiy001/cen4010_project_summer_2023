@@ -1,9 +1,6 @@
 package com.geektext.geektext_backend_api.controller;
 
-import com.geektext.geektext_backend_api.entity.BookEntity;
-import com.geektext.geektext_backend_api.entity.PublisherEntity;
-import com.geektext.geektext_backend_api.entity.RatingsEntity;
-import com.geektext.geektext_backend_api.entity.CommentsEntity;
+import com.geektext.geektext_backend_api.entity.*;
 import com.geektext.geektext_backend_api.repository.BookRepository;
 import com.geektext.geektext_backend_api.service.BookService;
 import org.springframework.http.HttpStatus;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/books")
@@ -57,11 +55,6 @@ public class BookController {
         return bookService.getAverageRatingForBook(isbn);
     }
 
-    @PostMapping
-    public void addBook(@RequestBody BookEntity bookEntity) {
-        bookService.addBook(bookEntity);
-    }
-
     @PutMapping(path = "/{isbn}")
     public void updateBook(@PathVariable String isbn, @RequestBody BookEntity bookEntity) {
         bookService.updateBook(isbn, bookEntity);
@@ -87,13 +80,12 @@ public class BookController {
         bookService.discountBooksByPublisher(discountPercent, publisher);
     }
 
-    @PostMapping("/books")
-    public ResponseEntity<BookEntity> createBook(@RequestBody BookEntity book) {
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(book);
+    @PostMapping
+    public void addBook(@RequestBody BookEntity bookEntity) {
+        bookService.addBook(bookEntity);
     }
 
-    @GetMapping("/books/{isbn}/description")
+    @GetMapping("/{isbn}/description")
     public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {
         String bookDescription = bookService.getBookDescriptionByIsbn(isbn);
 

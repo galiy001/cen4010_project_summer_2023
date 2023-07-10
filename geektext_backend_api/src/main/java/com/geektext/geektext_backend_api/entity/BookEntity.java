@@ -38,12 +38,12 @@ public class BookEntity {
     private Double discountPercent;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
     private PublisherEntity publisher;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     private AuthorEntity author;
 
@@ -157,11 +157,13 @@ public class BookEntity {
         this.author = author;
     }
 
-    public void SetRating(Set<RatingsEntity> rating) {
+    @JsonIgnore
+    public void setRating(Set<RatingsEntity> rating) {
         this.rating = rating;
     }
 
-    public Set<RatingsEntity> getRatings() {
+    @JsonIgnore
+    public Set<RatingsEntity> getRating() {
         return rating;
     }
 }

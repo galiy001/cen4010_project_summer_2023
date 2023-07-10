@@ -24,13 +24,18 @@ public class PublisherEntity {
     @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
     private List<BookEntity> books;
 
+    public PublisherEntity(int publisherId, String publisherName, List<BookEntity> books) {
+        this.publisherId = publisherId;
+        this.publisherName = publisherName;
+        this.books = books;
+    }
+
     public PublisherEntity() {
     }
 
     public PublisherEntity(String publisherName) {
         this.publisherName = publisherName;
     }
-
 
     public int getPublisherId() {
         return publisherId;

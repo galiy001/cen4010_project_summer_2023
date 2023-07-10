@@ -9,6 +9,7 @@ import com.geektext.geektext_backend_api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.Optional;
 import java.util.List;
 
@@ -93,8 +94,8 @@ public class BookServiceImplementation implements BookService {
     }
 
     @Override
-    public void addBook(BookEntity book) {
-        bookRepository.save(book);
+    public BookEntity addBook(BookEntity book) {
+        return bookRepository.save(book);
     }
 
     @Override
@@ -123,7 +124,7 @@ public class BookServiceImplementation implements BookService {
     }
 
     public Optional<BookEntity> findByIsbn(String isbn) {
-        return null;
+        return Optional.empty();
     }
 
     @Override

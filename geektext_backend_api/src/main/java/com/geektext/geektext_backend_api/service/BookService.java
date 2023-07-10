@@ -27,7 +27,7 @@ public interface BookService {
 
     Optional<BookEntity> findBookByIsbn(String isbn);
 
-    void addBook(BookEntity bookEntity);
+    BookEntity addBook(BookEntity bookEntity);
 
     void updateBook(String isbn, BookEntity bookEntity);
 
