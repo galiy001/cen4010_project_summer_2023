@@ -54,15 +54,11 @@ public class UserServiceImplementation implements UserService {
         if (existingUserOptional.isPresent()) {
             UserEntity existingUser = existingUserOptional.get();
 
-            // Update the fields of existingUser with the fields of userEntity.
-            // For example:
             existingUser.setUsername(userEntity.getUsername());
             existingUser.setPassword(userEntity.getPassword());
             existingUser.setFirstName(userEntity.getFirstName());
             existingUser.setLastName(userEntity.getLastName());
-            existingUser.setHomeAddress(userEntity.getHomeAddress());
 
-            // Update the user in the database.
             userRepository.save(existingUser);
 
             return existingUser;

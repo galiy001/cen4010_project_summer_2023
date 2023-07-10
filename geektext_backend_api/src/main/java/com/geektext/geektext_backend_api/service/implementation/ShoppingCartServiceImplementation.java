@@ -29,7 +29,7 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
     @Override
     public Optional<List<BookEntity>> getCartByUserId(Long userId) {
         Optional<UserEntity> user = userService.searchByUserId(userId);
-        if(user.isPresent()) {
+        if (user.isPresent()) {
             return Optional.ofNullable(user.get().getShoppingCart().getBooks());
         } else {
             return Optional.empty();
@@ -40,7 +40,7 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
     public void addBookToCart(Long userId, String isbn) {
         Optional<UserEntity> user = userService.searchByUserId(userId);
         Optional<BookEntity> book = bookService.findByIsbn(isbn);
-        if(user.isPresent() && book.isPresent()) {
+        if (user.isPresent() && book.isPresent()) {
             user.get().getShoppingCart().getBooks().add(book.get());
             userService.updateUser(user.get());
         }
@@ -50,7 +50,7 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
     public void removeBookFromCart(Long userId, String isbn) {
         Optional<UserEntity> user = userService.searchByUserId(userId);
         Optional<BookEntity> book = bookService.findByIsbn(isbn);
-        if(user.isPresent() && book.isPresent()) {
+        if (user.isPresent() && book.isPresent()) {
             user.get().getShoppingCart().getBooks().remove(book.get());
             userService.updateUser(user.get());
         }
@@ -59,7 +59,7 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
     @Override
     public double calculateSubtotal(Long userId) {
         Optional<List<BookEntity>> booksInCart = getCartByUserId(userId);
-        if(booksInCart.isPresent()) {
+        if (booksInCart.isPresent()) {
             return booksInCart.get().stream().mapToDouble(BookEntity::getPrice).sum();
         } else {
             return 0;

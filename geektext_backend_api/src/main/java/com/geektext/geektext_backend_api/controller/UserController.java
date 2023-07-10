@@ -2,6 +2,8 @@ package com.geektext.geektext_backend_api.controller;
 
 import com.geektext.geektext_backend_api.entity.UserEntity;
 import com.geektext.geektext_backend_api.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,13 +35,23 @@ public class UserController {
     }
 
     @PostMapping
-    public UserEntity createNewUser(@RequestBody UserEntity userEntity) {
-        return userService.createNewUser(userEntity);
-    }
+    public ResponseEntity<UserEntity> createNewUser(@RequestBody UserEntity userEntity) {
+        if (userEntity.getUsername() == null || userEntity.getPassword() == null) {
+            return ResponseEntity.badRequest().build();
+        }
 
-    @PutMapping
-    public UserEntity updateUser(@RequestBody UserEntity userEntity) {
-        return userService.updateUser(userEntity);
+        UserEntity newUser = new UserEntity();
+        newUser.setUsername(userEntity.getUsername());
+        newUser.setPassword(userEntity.getPassword());
+
+        newUser.setFirstName(userEntity.getFirstName() != null ? userEntity.getFirstName() : "");
+        newUser.setLastName(userEntity.getLastName() != null ? userEntity.getLastName() : "");
+        newUser.setHomeAddress(userEntity.getHomeAddress() != null ? userEntity.getHomeAddress() : "");
+        newUser.setEmailAddress(userEntity.getEmailAddress() != null ? userEntity.getEmailAddress() : "");
+
+        UserEntity savedUser = userService.createNewUser(newUser);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
     }
 
     @DeleteMapping("/{user_id}")

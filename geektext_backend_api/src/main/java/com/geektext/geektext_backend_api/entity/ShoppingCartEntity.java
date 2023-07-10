@@ -33,7 +33,15 @@ public class ShoppingCartEntity {
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ShoppingCartBookEntity> shoppingCartBooks = new ArrayList<>();
 
-    public ShoppingCartEntity() {}
+    public ShoppingCartEntity(Long cartId, UserEntity user, List<BookEntity> books, List<ShoppingCartBookEntity> shoppingCartBooks) {
+        this.cartId = cartId;
+        this.user = user;
+        this.books = books;
+        this.shoppingCartBooks = shoppingCartBooks;
+    }
+
+    public ShoppingCartEntity() {
+    }
 
     public Long getCartId() {
         return cartId;

@@ -28,7 +28,8 @@ public class CreditCardsEntity {
     @Column(name = "cvv")
     private int cvv;
 
-    public CreditCardsEntity() {}
+    public CreditCardsEntity() {
+    }
 
     public CreditCardsEntity(UserEntity user, int cardNumber, Date expirationDate, int cvv) {
         this.user = user;

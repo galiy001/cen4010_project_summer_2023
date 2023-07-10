@@ -4,6 +4,7 @@ import com.geektext.geektext_backend_api.entity.BookEntity;
 import com.geektext.geektext_backend_api.entity.CommentsEntity;
 import com.geektext.geektext_backend_api.entity.PublisherEntity;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -24,9 +25,9 @@ public interface BookService {
 
     Optional<BookEntity> findByIsbn(String isbn);
 
-    public Optional<BookEntity> findBookByIsbn(String isbn);
+    Optional<BookEntity> findBookByIsbn(String isbn);
 
-    void addBook(BookEntity bookEntity);
+    BookEntity addBook(BookEntity bookEntity);
 
     void updateBook(String isbn, BookEntity bookEntity);
 
@@ -34,8 +35,9 @@ public interface BookService {
 
     List<BookEntity> getTopSellingBooks();
 
-    public void discountBooksByPublisher(double discountPercent, PublisherEntity publisher);
+    void discountBooksByPublisher(double discountPercent, PublisherEntity publisher);
 
-    public List<BookEntity> findByRatingOrHigher(Long rating);
-	
+    List<BookEntity> findByRatingOrHigher(Long rating);
+
+    String getBookDescriptionByIsbn(String isbn);
 }

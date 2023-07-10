@@ -1,16 +1,18 @@
 package com.geektext.geektext_backend_api.controller;
 
-import com.geektext.geektext_backend_api.entity.BookEntity;
-import com.geektext.geektext_backend_api.entity.PublisherEntity;
-import com.geektext.geektext_backend_api.entity.RatingsEntity;
-import com.geektext.geektext_backend_api.entity.CommentsEntity;
+import com.geektext.geektext_backend_api.entity.*;
+import com.geektext.geektext_backend_api.repository.BookRepository;
 import com.geektext.geektext_backend_api.service.BookService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/books")
@@ -53,11 +55,6 @@ public class BookController {
         return bookService.getAverageRatingForBook(isbn);
     }
 
-    @PostMapping
-    public void addBook(@RequestBody BookEntity bookEntity) {
-        bookService.addBook(bookEntity);
-    }
-
     @PutMapping(path = "/{isbn}")
     public void updateBook(@PathVariable String isbn, @RequestBody BookEntity bookEntity) {
         bookService.updateBook(isbn, bookEntity);
@@ -82,4 +79,24 @@ public class BookController {
     public void discountBooksByPublisher(@PathVariable double discountPercent, @PathVariable PublisherEntity publisher) {
         bookService.discountBooksByPublisher(discountPercent, publisher);
     }
+
+    @PostMapping
+    public void addBook(@RequestBody BookEntity bookEntity) {
+        bookService.addBook(bookEntity);
+    }
+
+    @GetMapping("/{isbn}/description")
+    public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {
+        String bookDescription = bookService.getBookDescriptionByIsbn(isbn);
+
+        if (bookDescription != null) {
+
+            return ResponseEntity.ok(bookDescription);
+        } else {
+
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }

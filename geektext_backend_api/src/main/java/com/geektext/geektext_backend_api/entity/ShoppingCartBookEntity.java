@@ -22,6 +22,7 @@ public class ShoppingCartBookEntity {
     @JoinColumn(name = "isbn")
     private BookEntity book;
 
+
     public Long getId() {
         return id;
     }
@@ -30,10 +31,12 @@ public class ShoppingCartBookEntity {
         this.id = id;
     }
 
+    @JsonIgnore
     public ShoppingCartEntity getCart() {
         return cart;
     }
 
+    @JsonIgnore
     public void setCart(ShoppingCartEntity cart) {
         this.cart = cart;
     }
