@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.print.Book;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Optional;
 import java.util.List;
 
@@ -138,14 +140,17 @@ public class BookServiceImplementation implements BookService {
     }
 
     @Override
-    public void discountBooksByPublisher(double discountPercent, PublisherEntity publisher) {
+    public void discountBooksByPublisher(Double discountPercent, PublisherEntity publisher) {
         List<BookEntity> books = bookRepository.findByPublisher(publisher);
 
-        for (BookEntity book : books) {
-            double currentPrice = book.getPrice();
-            double discountedPrice = currentPrice - (currentPrice * discountPercent / 100);
+        BigDecimal discount = BigDecimal.valueOf(discountPercent).divide(BigDecimal.valueOf(100));
 
-            book.setPrice(discountedPrice);
+        for (BookEntity book : books) {
+            BigDecimal currentPrice = BigDecimal.valueOf(book.getPrice());
+            BigDecimal discountedPrice = currentPrice.subtract(currentPrice.multiply(discount));
+            discountedPrice = discountedPrice.setScale(2, RoundingMode.HALF_UP);
+
+            book.setPrice(discountedPrice.doubleValue());
             bookRepository.save(book);
         }
     }

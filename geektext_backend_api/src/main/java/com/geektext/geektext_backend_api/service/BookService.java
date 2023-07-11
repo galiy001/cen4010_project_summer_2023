@@ -35,7 +35,7 @@ public interface BookService {
 
     List<BookEntity> getTopSellingBooks();
 
-    void discountBooksByPublisher(double discountPercent, PublisherEntity publisher);
+    void discountBooksByPublisher(Double discountPercent, PublisherEntity publisher);
 
     List<BookEntity> findByRatingOrHigher(Long rating);
 
