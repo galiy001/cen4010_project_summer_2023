@@ -12,7 +12,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import java.time.LocalDateTime;
 
+/*
+This class represents the Rating entity in the system. It captures a user's rating for a particular book they have purchased.
+Each rating is a score on a 5-star scale.
+*/
 @Entity
 @Table(name = "ratings")
 public class RatingsEntity {
@@ -22,6 +28,9 @@ public class RatingsEntity {
     @Column(name = "rating_id")
     private Long ratingId;
 
+    @CreatedDate
+    @Column(name = "datestamp")
+    private LocalDateTime datestamp;
     @Column(name = "rating")
     private Long rating;
 

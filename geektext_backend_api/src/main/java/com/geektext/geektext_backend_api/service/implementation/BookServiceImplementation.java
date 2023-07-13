@@ -18,7 +18,10 @@ import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-
+/*
+This class implements the BookService interface, providing implementations for all its methods.
+It uses the CommentRepository and RatingRepository to interact with the database for comment and rating related operations.
+*/
 @Service
 public class BookServiceImplementation implements BookService {
 
@@ -39,7 +42,7 @@ public class BookServiceImplementation implements BookService {
         return bookRepository.findById(isbn)
                 .orElseThrow(() -> new IllegalArgumentException("Book not found."));
     }
-
+// Handles GET requests to fetch all comments for a book
     public List<CommentsEntity> getCommentsForBook(String isbn) {
         Optional<BookEntity> bookOptional = bookRepository.findByIsbn(isbn);
         if (bookOptional.isEmpty()) {
@@ -48,6 +51,8 @@ public class BookServiceImplementation implements BookService {
         BookEntity book = bookOptional.get();
         return commentRepository.findByBookIsbn(book.getIsbn());
     }
+
+    // Handles POST requests to add a new rating for a book by a user
 
     public void rateBook(String isbn, Long userId, Long rating) {
         Optional<UserEntity> userOptional = userRepository.findById(userId);
@@ -70,7 +75,7 @@ public class BookServiceImplementation implements BookService {
             throw new IllegalArgumentException("User not found.");
         }
     }
-
+// Handles POST requests to add a new comment for a book by a user
     public void commentBook(String isbn, Long userId, String comment) {
         BookEntity book = getBookByIsbn(isbn);
         UserEntity user = userRepository.findById(userId)
@@ -116,7 +121,7 @@ public class BookServiceImplementation implements BookService {
             throw new RuntimeException("Book with ISBN " + isbn + " not found.");
         }
     }
-
+// Handles GET requests to fetch the average rating for a book
     public Double getAverageRatingForBook(String isbn) {
         Double avg = ratingRepository.findAverageRatingByBookId(isbn);
         if (avg == null) {
