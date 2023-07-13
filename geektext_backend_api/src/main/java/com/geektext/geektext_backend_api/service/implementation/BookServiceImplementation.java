@@ -110,7 +110,7 @@ public class BookServiceImplementation implements BookService {
         Optional<BookEntity> optionalEntity = bookRepository.findByIsbn(isbn);
         if (optionalEntity.isPresent()) {
             BookEntity existingEntity = optionalEntity.get();
-            // Assuming all fields should be updated. Adjust as needed.
+
             existingEntity.setName(book.getName());
             existingEntity.setAuthor(book.getAuthor());
             existingEntity.setGenre(book.getGenre());
