@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
+//The UserController class is typically a part of a web application's backend or server-side code.
 public class UserController {
 
     private final UserService userService;

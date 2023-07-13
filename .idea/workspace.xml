@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="079ecfd6-c042-47e5-a5a7-e65e49691520" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/CreditCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/repository/CreditCardRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/CreditCardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/implementation/CreditCardServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/ShoppingCartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorBookEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorBookEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/AuthorEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartBookEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartBookEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/entity/ShoppingCartEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/implementation/UserServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/service/implementation/UserServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/service/implementation/UserServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/service/implementation/UserServiceImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/controller/BookController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +67,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;1496e0bc4cf70028329a3ba368b1c3ad&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
