@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+/*
+This interface defines the service layer for book-related operations, including those related to comments and ratings.
+It declares methods to fetch all comments for a book, to add a rating for a book, to add a comment for a book, and to fetch the average rating for a book.
+*/
 @Service
 public interface BookService {
 

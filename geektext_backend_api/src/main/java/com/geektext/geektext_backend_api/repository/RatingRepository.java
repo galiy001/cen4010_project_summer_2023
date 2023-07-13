@@ -6,7 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+/*
+This interface extends JpaRepository to provide database operations related to the Rating entity.
+It includes methods to fetch the average rating for a book using its ISBN, and to fetch all ratings associated with a particular user or book.
+*/
 @Repository
 public interface RatingRepository extends JpaRepository<RatingsEntity, Long> {
 
