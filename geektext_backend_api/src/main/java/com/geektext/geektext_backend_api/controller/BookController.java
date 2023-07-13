@@ -84,12 +84,12 @@ public class BookController {
     }
 
     @PostMapping
-    public void addBook(@RequestBody BookEntity bookEntity) {
+    public void addBook(@RequestBody BookEntity bookEntity) { //Add book method for adding a book to the database
         bookService.addBook(bookEntity);
     }
 
     @GetMapping("/{isbn}/description")
-    public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {
+    public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {  //Method for getting  all book details
         String bookDescription = bookService.getBookDescriptionByIsbn(isbn);
 
         if (bookDescription != null) {
