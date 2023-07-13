@@ -1,18 +1,13 @@
 package com.geektext.geektext_backend_api.controller;
 
 import com.geektext.geektext_backend_api.entity.*;
-import com.geektext.geektext_backend_api.repository.BookRepository;
+import com.geektext.geektext_backend_api.repository.PublisherRepository;
 import com.geektext.geektext_backend_api.service.BookService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Book;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/books")
@@ -20,9 +15,12 @@ public class BookController {
 
     private final BookService bookService;
 
+    private final PublisherRepository publisherRepository;
+
     @Autowired
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, PublisherRepository publisherRepository) {
         this.bookService = bookService;
+        this.publisherRepository = publisherRepository;
     }
 
     @GetMapping
@@ -75,9 +73,14 @@ public class BookController {
         return bookService.findByRatingOrHigher(rating);
     }
 
-    @PutMapping("/discount/{discountPercent}/{publisher_id}")
-    public void discountBooksByPublisher(@PathVariable double discountPercent, @PathVariable PublisherEntity publisher) {
+    @PutMapping("/discount/{discount_percent}/{publisher_id}")
+    public ResponseEntity<?> discountBooksByPublisher(@PathVariable("discount_percent") Double discountPercent, @PathVariable("publisher_id") Long publisherId) {
+        PublisherEntity publisher = publisherRepository.findById(publisherId)
+                .orElseThrow(() -> new RuntimeException("Publisher not found."));
+
         bookService.discountBooksByPublisher(discountPercent, publisher);
+
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping

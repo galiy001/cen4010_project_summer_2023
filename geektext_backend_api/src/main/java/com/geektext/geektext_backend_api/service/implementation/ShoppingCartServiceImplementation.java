@@ -39,17 +39,19 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
     @Override
     public void addBookToCart(Long userId, String isbn) {
         Optional<UserEntity> user = userService.searchByUserId(userId);
-        Optional<BookEntity> book = bookService.findByIsbn(isbn);
+        Optional<BookEntity> book = bookService.findBookByIsbn(isbn);
         if (user.isPresent() && book.isPresent()) {
             user.get().getShoppingCart().getBooks().add(book.get());
             userService.updateUser(user.get());
+        } else {
+            System.out.println("User or Book not found");
         }
     }
 
     @Override
     public void removeBookFromCart(Long userId, String isbn) {
         Optional<UserEntity> user = userService.searchByUserId(userId);
-        Optional<BookEntity> book = bookService.findByIsbn(isbn);
+        Optional<BookEntity> book = bookService.findBookByIsbn(isbn);
         if (user.isPresent() && book.isPresent()) {
             user.get().getShoppingCart().getBooks().remove(book.get());
             userService.updateUser(user.get());
