@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// This is the shopping cart controller which will implement all of the methods between the
+// classes and interfaces that we created in the entity, repositories, services, and implementations.
+
 @RestController
 @RequestMapping("/shopping_cart")
 public class ShoppingCartController {

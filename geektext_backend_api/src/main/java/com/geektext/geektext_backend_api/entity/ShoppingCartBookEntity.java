@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+// This is the intermediary table which will allow us to have a relation between Shopping Carts and Books.
+
 @Entity
 @Table(name = "shopping_cart_books")
 public class ShoppingCartBookEntity {
