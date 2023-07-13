@@ -21,7 +21,7 @@ public class AuthorController {
 
     @PostMapping
     public ResponseEntity<AuthorEntity> createAuthor(@RequestBody AuthorEntity authorEntity) {
-        if (authorEntity.getFirstName() == null || authorEntity.getLastName() == null || authorEntity.getBiography() == null || authorEntity.getPublisher() == null ){
+        if (authorEntity.getFirstName() == null || authorEntity.getLastName() == null || authorEntity.getBiography() == null || authorEntity.getPublisher() == null ){  //Method for adding a user to the Database
             return ResponseEntity.badRequest().build();
         }
 
@@ -39,7 +39,7 @@ public class AuthorController {
     }
 
     @GetMapping("/{authorId}")
-    public List<BookEntity> getBooksByAuthorId(@PathVariable Long authorId) {
+    public List<BookEntity> getBooksByAuthorId(@PathVariable Long authorId) { // Method for retrieving all  book associated with a book Id
         return authorService.getBooksByAuthorId(authorId);
     }
 
