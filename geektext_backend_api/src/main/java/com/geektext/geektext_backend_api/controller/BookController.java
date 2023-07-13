@@ -58,21 +58,25 @@ public class BookController {
         bookService.updateBook(isbn, bookEntity);
     }
 
+    //this is the method where I retrieve a list of books of the same genre.
     @GetMapping(path = "/genre/{genre}")
     public List<BookEntity> getBooksByGenre(@PathVariable String genre) {
         return bookService.getBooksByGenre(genre);
     }
 
+    //method that retrieves the ten most sold books in descending order.
     @GetMapping(path = "/top-sellers")
     public List<BookEntity> getTopSellingBooks() {
         return bookService.getTopSellingBooks();
     }
 
+    // method retrieves all the books with a rating equal to or greater than the input rating.
     @GetMapping("/rating/{rating}")
     public List<BookEntity> getBooksByRatingOrHigher(@PathVariable Long rating) {
         return bookService.findByRatingOrHigher(rating);
     }
 
+    // method applies a discount to books associated with a specific publisher.
     @PutMapping("/discount/{discount_percent}/{publisher_id}")
     public ResponseEntity<?> discountBooksByPublisher(@PathVariable("discount_percent") Double discountPercent, @PathVariable("publisher_id") Long publisherId) {
         PublisherEntity publisher = publisherRepository.findById(publisherId)
