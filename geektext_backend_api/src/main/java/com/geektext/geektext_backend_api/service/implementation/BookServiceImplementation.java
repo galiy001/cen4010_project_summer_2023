@@ -113,7 +113,7 @@ public class BookServiceImplementation implements BookService {
         Optional<BookEntity> optionalEntity = bookRepository.findByIsbn(isbn);
         if (optionalEntity.isPresent()) {
             BookEntity existingEntity = optionalEntity.get();
-            // Assuming all fields should be updated. Adjust as needed.
+
             existingEntity.setName(book.getName());
             existingEntity.setAuthor(book.getAuthor());
             existingEntity.setGenre(book.getGenre());
@@ -130,7 +130,11 @@ public class BookServiceImplementation implements BookService {
         if (avg == null) {
             throw new IllegalArgumentException("No ratings found for this book");
         }
-        return avg;
+
+        BigDecimal averageRating = BigDecimal.valueOf(avg);
+        BigDecimal roundedRating = averageRating.setScale(2, RoundingMode.HALF_UP);
+
+        return roundedRating.doubleValue();
     }
 
     public Optional<BookEntity> findByIsbn(String isbn) {
