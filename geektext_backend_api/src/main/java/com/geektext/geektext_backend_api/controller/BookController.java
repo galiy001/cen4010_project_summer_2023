@@ -3,6 +3,7 @@ package com.geektext.geektext_backend_api.controller;
 import com.geektext.geektext_backend_api.entity.*;
 import com.geektext.geektext_backend_api.repository.PublisherRepository;
 import com.geektext.geektext_backend_api.service.BookService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,11 +85,12 @@ public class BookController {
     }
 
     @PostMapping
-    public void addBook(@RequestBody BookEntity bookEntity) { //Add book method for adding a book to the database
-        bookService.addBook(bookEntity);
-    }
+    public ResponseEntity<BookEntity> AddBook(@RequestBody BookEntity book) {
 
-    @GetMapping("/{isbn}/description")
+        return ResponseEntity.status(HttpStatus.CREATED).body(book);
+
+    }
+        @GetMapping("/{isbn}/description")
     public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {  //Method for getting  all book details
         String bookDescription = bookService.getBookDescriptionByIsbn(isbn);
 
