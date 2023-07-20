@@ -85,12 +85,11 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookEntity> AddBook(@RequestBody BookEntity book) {
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(book);
-
+    public void addBook(@RequestBody BookEntity bookEntity) { //Add book method for adding a book to the database
+        bookService.addBook(bookEntity);
     }
-        @GetMapping("/{isbn}/description")
+
+    @GetMapping("/{isbn}/description")
     public ResponseEntity<String> getBookDescription(@PathVariable("isbn") String isbn) {  //Method for getting  all book details
         String bookDescription = bookService.getBookDescriptionByIsbn(isbn);
 
