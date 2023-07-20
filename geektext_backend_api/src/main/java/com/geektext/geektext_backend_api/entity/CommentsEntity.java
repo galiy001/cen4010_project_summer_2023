@@ -39,7 +39,7 @@ public class CommentsEntity {
         this.comment = comment;
         this.book = book;
         this.user = user;
-        //this.datestamp = datestamp;
+
     }
 
     public CommentsEntity() {
@@ -76,5 +76,8 @@ public class CommentsEntity {
     public void setBook(BookEntity book) {
         this.book = book;
     }
-
+    public LocalDateTime getDatestamp() {return datestamp;}
+    public void setDatestamp(LocalDateTime datestamp) {
+        this.datestamp = datestamp;
+    }
 }

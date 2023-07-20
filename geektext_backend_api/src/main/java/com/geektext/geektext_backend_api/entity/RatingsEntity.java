@@ -47,7 +47,7 @@ public class RatingsEntity {
     }
 
     public RatingsEntity(Long rating, BookEntity book, UserEntity user) {
-        this.rating = rating;
+
         this.book = book;
         this.user = user;
         this.rating = rating;
@@ -84,4 +84,9 @@ public class RatingsEntity {
     public UserEntity getUser() {
         return user;
     }
+    public LocalDateTime getDatestamp() {return datestamp;}
+    public void setDatestamp(LocalDateTime datestamp) {
+        this.datestamp = datestamp;
+    }
+
 }

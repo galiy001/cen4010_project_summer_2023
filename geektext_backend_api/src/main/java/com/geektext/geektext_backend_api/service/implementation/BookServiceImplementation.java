@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.awt.print.Book;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.List;
 
@@ -67,6 +68,7 @@ public class BookServiceImplementation implements BookService {
                 newRating.setUser(user);
                 newRating.setBook(book);
                 newRating.setRating(rating);
+                newRating.setDatestamp(LocalDateTime.now());
                 ratingRepository.save(newRating);
             } else {
                 throw new IllegalArgumentException("Book not found.");
@@ -84,6 +86,7 @@ public class BookServiceImplementation implements BookService {
 
         if (book != null) {
             CommentsEntity newComment = new CommentsEntity(comment, user, book);
+            newComment.setDatestamp(LocalDateTime.now());
             commentRepository.save(newComment);
         } else {
             throw new IllegalArgumentException("Book not found.");
