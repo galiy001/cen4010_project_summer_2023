@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="079ecfd6-c042-47e5-a5a7-e65e49691520" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/geektext_backend_api/geektext_backend_api.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/java/com/geektext/geektext_backend_api/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/geektext_backend_api/target/classes/com/geektext/geektext_backend_api/controller/BookController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +53,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
+    &quot;keyToString&quot;: {
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -62,10 +67,13 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;1496e0bc4cf70028329a3ba368b1c3ad&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+    }
+    }</component>
   <component name="RunManager">
     <configuration name="GeektextBackendApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="geektext_backend_api" />
