@@ -121,13 +121,18 @@ public class BookServiceImplementation implements BookService {
             throw new RuntimeException("Book with ISBN " + isbn + " not found.");
         }
     }
+
 // Handles GET requests to fetch the average rating for a book
     public Double getAverageRatingForBook(String isbn) {
         Double avg = ratingRepository.findAverageRatingByBookId(isbn);
         if (avg == null) {
             throw new IllegalArgumentException("No ratings found for this book");
         }
-        return avg;
+
+        BigDecimal averageRating = BigDecimal.valueOf(avg);
+        BigDecimal roundedRating = averageRating.setScale(2, RoundingMode.HALF_UP);
+
+        return roundedRating.doubleValue();
     }
 
     public Optional<BookEntity> findByIsbn(String isbn) {

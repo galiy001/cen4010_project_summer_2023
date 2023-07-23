@@ -91,6 +91,8 @@ public class BookController {
         Long userId = request.getUserId();
         Long rating = request.getRate();
 
+        bookService.rateBook(isbn, userId, rating);
+
         String responseMessage = "Rating successfully recorded for book with ISBN: " + isbn +
                 ", User ID: " + userId +
                 ", Date Stamp: " + dateStamp +
@@ -105,10 +107,12 @@ public class BookController {
         Long userId = request.getUserId();
         String comment = request.getComment();
 
+        bookService.commentBook(isbn, userId, comment);
+
         String responseMessage = "Rating successfully recorded for book with ISBN: " + isbn +
                 ", User ID: " + userId +
                 ", Date Stamp: " + dateStamp +
-                ", Rating: " + comment;
+                ", Comment: " + comment;
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseMessage);
     }
