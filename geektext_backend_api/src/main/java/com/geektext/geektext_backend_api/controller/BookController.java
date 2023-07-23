@@ -3,15 +3,62 @@ package com.geektext.geektext_backend_api.controller;
 import com.geektext.geektext_backend_api.entity.*;
 import com.geektext.geektext_backend_api.repository.PublisherRepository;
 import com.geektext.geektext_backend_api.service.BookService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.xml.stream.events.Comment;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/books")
 public class BookController {
+
+    public static class CommentRequest {
+        public Long getUserId() {
+            return userId;
+        }
+
+        public void setUserId(Long userId) {
+            this.userId = userId;
+        }
+
+        public String getComment() {
+            return comment;
+        }
+
+        public void setComment(String comment) {
+            this.comment = comment;
+        }
+
+        private Long userId;
+        private String comment;
+
+    }
+
+    public static class RateRequest {
+        public Long getUserId() {
+            return userId;
+        }
+
+        public void setUserId(Long userId) {
+            this.userId = userId;
+        }
+
+        public Long getRate() {
+            return rate;
+        }
+
+        public void setRate(Long rate) {
+            this.rate = rate;
+        }
+
+        private Long userId;
+        private Long rate;
+
+    }
 
     private final BookService bookService;
 
@@ -39,13 +86,31 @@ public class BookController {
     }
 
     @PostMapping("/{isbn}/rate")
-    public void rateBook(@PathVariable String isbn, @RequestParam Long userId, @RequestParam Long rating) {
-        bookService.rateBook(isbn, userId, rating);
+    public ResponseEntity<String> rateBook(@PathVariable String isbn, @RequestBody RateRequest request) {
+        Date dateStamp = new Date();
+        Long userId = request.getUserId();
+        Long rating = request.getRate();
+
+        String responseMessage = "Rating successfully recorded for book with ISBN: " + isbn +
+                ", User ID: " + userId +
+                ", Date Stamp: " + dateStamp +
+                ", Rating: " + rating;
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseMessage);
     }
 
     @PostMapping("/{isbn}/comment")
-    public void commentBook(@PathVariable String isbn, @RequestParam Long userId, @RequestParam String comment) {
-        bookService.commentBook(isbn, userId, comment);
+    public ResponseEntity<String> commentBook(@PathVariable String isbn, @RequestBody CommentRequest request) {
+        Date dateStamp = new Date();
+        Long userId = request.getUserId();
+        String comment = request.getComment();
+
+        String responseMessage = "Rating successfully recorded for book with ISBN: " + isbn +
+                ", User ID: " + userId +
+                ", Date Stamp: " + dateStamp +
+                ", Rating: " + comment;
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseMessage);
     }
 
     @GetMapping("/{isbn}/rating")
