@@ -20,18 +20,18 @@ public class CreditCardsEntity {
     private UserEntity user;
 
     @Column(name = "card_number")
-    private int cardNumber;
+    private String cardNumber;
 
     @Column(name = "expiration_date")
     private Date expirationDate;
 
     @Column(name = "cvv")
-    private int cvv;
+    private Integer cvv;
 
     public CreditCardsEntity() {
     }
 
-    public CreditCardsEntity(UserEntity user, int cardNumber, Date expirationDate, int cvv) {
+    public CreditCardsEntity(UserEntity user, String cardNumber, Date expirationDate, Integer cvv) {
         this.user = user;
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
@@ -54,11 +54,11 @@ public class CreditCardsEntity {
         this.user = user;
     }
 
-    public int getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -70,11 +70,11 @@ public class CreditCardsEntity {
         this.expirationDate = expirationDate;
     }
 
-    public int getCvv() {
+    public Integer getCvv() {
         return cvv;
     }
 
-    public void setCvv(int cvv) {
+    public void setCvv(Integer cvv) {
         this.cvv = cvv;
     }
 }
